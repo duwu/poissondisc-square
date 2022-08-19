@@ -1,10 +1,10 @@
 ## poissondisc
 
-Poisson Disc sampling in Go.
+Poisson Disc of square sampling in Go.
 
 ### Installation
 
-    $ go get -u github.com/fogleman/poissondisc
+    $ go get -u github.com/duwu/poissondisc-square
 
 ### Documentation
 
@@ -36,6 +36,6 @@ for _, p := range points {
 
 ### Example
 
-    $ go run examples/example.go
+    $ go run examples/main.go
 
-![Example](https://i.imgur.com/8TJYd9s.png)
+![Example](./out.png)

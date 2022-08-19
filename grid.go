@@ -13,8 +13,8 @@ type grid struct {
 }
 
 func newGrid(x0, y0, x1, y1, r float64) *grid {
-	size := r / math.Sqrt(2)
-
+	size := r
+	r = r * math.Sqrt2
 	i0 := int(math.Floor(x0 / size))
 	j0 := int(math.Floor(y0 / size))
 	i1 := int(math.Floor(x1 / size))
@@ -36,7 +36,7 @@ func (g *grid) insert(p Point) bool {
 	cj := int(math.Floor(p.Y/g.size)) - g.j0
 
 	q := g.cells[cj*g.gw+ci]
-	if q != sentinel && p.distance(q) < g.radius {
+	if q != sentinel && p.IsCrossLine(q, g.size) {
 		return false
 	}
 
@@ -47,7 +47,7 @@ func (g *grid) insert(p Point) bool {
 	for j := j0; j < j1; j++ {
 		for i := i0; i < i1; i++ {
 			q := g.cells[j*g.gw+i]
-			if q != sentinel && p.distance(q) < g.radius {
+			if q != sentinel && p.IsCrossLine(q, g.size) {
 				return false
 			}
 		}
